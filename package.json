@@ -1,0 +1,23 @@
+{
+  "name": "adamaths-power-design",
+  "version": "1.0.0",
+  "description": "Application installable de dimensionnement de groupes électrogènes",
+  "main": "electron/main.cjs",
+  "author": "AdaMaths",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis portable"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.adamaths.powerdesign",
+    "productName": "AdaMaths Power Design",
+    "files": ["index.html", "style.css", "app.js", "manifest.webmanifest", "sw.js", "icons/**/*", "*.pdf", "fiches-techniques/**/*", "logo-solar.jpg"],
+    "win": {"target": ["nsis", "portable"], "icon": "icons/icon-512.svg"},
+    "nsis": {"oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true}
+  }
+}

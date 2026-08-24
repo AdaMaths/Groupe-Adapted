@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d1727"><meta name="description" content="Application AdaMaths de dimensionnement de groupes électrogènes.">
+  <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <title>AdaMaths · Dimensionnement de groupes électrogènes</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-symbol">A</span><span><b>AdaMaths</b><small>POWER DESIGN</small></span></a>
+    <nav><a class="active" href="#dimensionnement">Dimensionnement</a><a href="#fiches">Fiches techniques</a></nav>
+    <div class="top-actions"><span class="save-state"><i></i> Sauvegarde locale</span><button id="theme" class="ghost" aria-label="Changer le thème">☼</button></div>
+  </header>
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">OUTIL DE PRÉ-DIMENSIONNEMENT</p><h1>Concevez votre solution<br><em>énergétique.</em></h1><p class="intro-copy">Calculez la puissance nécessaire et trouvez le groupe électrogène adapté à votre installation.</p></div>
+      <div class="intro-note"><span>FACTEUR DE PUISSANCE</span><strong>0,8</strong><small>Valeur de référence</small></div>
+    </section>
+
+    <section id="dimensionnement" class="layout">
+      <div class="work-column">
+        <article class="panel">
+          <div class="panel-title"><div><span class="step">01</span><div><p class="eyebrow">INFORMATIONS DU PROJET</p><h2>Votre client</h2></div></div><span class="optional">Optionnel</span></div>
+          <div class="form-grid">
+            <label>Nom du client<input id="client" placeholder="Ex. Entreprise ABC"></label>
+            <label>Téléphone<input id="phone" type="tel" placeholder="+221 77 000 00 00"></label>
+            <label>Nom du commercial<input id="salesperson" placeholder="Votre nom"></label>
+            <label>Date du devis<input id="date" type="date"></label>
+          </div>
+          <label class="comments-field">Commentaires / besoins particuliers<textarea id="comments" rows="3" placeholder="Ajoutez une remarque, une contrainte d’installation ou une précision pour le devis…"></textarea></label>
+        </article>
+        <article class="panel">
+          <div class="panel-title"><div><span class="step">02</span><div><p class="eyebrow">CHARGE À ALIMENTER</p><h2>Vos équipements</h2></div></div><span class="row-count" id="row-count">1 équipement</span></div>
+          <div class="table-wrap"><table><thead><tr><th>Matériel</th><th>Puissance <small>(W)</small></th><th>Quantité</th><th>Coefficient</th><th></th></tr></thead><tbody id="equipment-rows"></tbody></table></div>
+          <div class="table-actions"><button id="add-row" class="add-row">＋ Ajouter un équipement</button><button id="reset-rows" class="text-button">Réinitialiser</button></div>
+        </article>
+        <div class="action-row"><button id="calculate" class="primary">Calculer la puissance <span>→</span></button><button id="export-csv" class="secondary">Exporter Excel <span>↓</span></button><button id="export-pdf" class="secondary">Rapport PDF <span>↓</span></button></div>
+      </div>
+      <aside class="result-column">
+        <article class="result-card">
+          <div class="result-top"><div><p class="eyebrow">RÉSULTAT DU DIMENSIONNEMENT</p><h2>Recommandation</h2></div><span class="check">✓</span></div>
+          <div class="recommendation"><span>GROUPE CONSEILLÉ</span><strong id="recommended">— <small>kVA</small></strong><p id="recommendation-copy">Ajoutez vos équipements puis lancez le calcul.</p></div>
+          <div class="result-metrics"><div><span>Puissance active</span><b id="total-w">0 W</b></div><div><span>Puissance apparente</span><b id="total-kva">0 kVA</b></div></div>
+          <div class="capacity"><div><span>Capacité utilisée</span><b id="capacity-label">—</b></div><div class="capacity-bar"><i id="capacity-bar"></i></div><small id="capacity-note">Sélectionnez un groupe pour voir la marge.</small></div>
+        </article>
+        <article class="chart-card panel"><div class="panel-title"><div><p class="eyebrow">RÉPARTITION</p><h2>Puissance par équipement</h2></div></div><div class="chart-container"><canvas id="power-chart"></canvas><div id="chart-empty">Le graphique apparaîtra après le calcul.</div></div></article>
+      </aside>
+    </section>
+
+    <section id="fiches" class="catalog">
+      <div class="section-head"><div><p class="eyebrow">DOCUMENTATION TECHNIQUE</p><h2>Fiches des groupes disponibles</h2><p>Consultez la fiche correspondant à votre recommandation.</p></div><label class="search">⌕ <input id="search" placeholder="Rechercher une puissance…"></label></div>
+      <div class="generator-grid" id="generator-grid"></div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-brand"><span class="brand-symbol">A</span><div><strong>AdaMaths Power Design</strong><small>Votre solution de dimensionnement énergétique</small></div></div>
+    <div class="footer-contact"><span>CONTACTEZ-NOUS</span><a href="https://wa.me/221772311101" target="_blank" rel="noopener">◉ WhatsApp&nbsp; +221 77 231 11 01</a><a href="mailto:adama.gueye.3304@gmail.com">✉ adama.gueye.3304@gmail.com</a></div>
+    <div class="footer-note">Calcul indicatif — validez toujours l’installation avec un professionnel qualifié.</div>
+  </footer>
+</body>
+</html>
